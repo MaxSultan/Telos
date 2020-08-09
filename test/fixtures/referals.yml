@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  f_name: MyString
+  l_name: MyString
+  source: MyString
+  ed_con: MyString
+  therapist: MyString
+  w_therapist: MyString
+  status: MyString
+  color: MyString
+  result: MyString
+
+two:
+  f_name: MyString
+  l_name: MyString
+  source: MyString
+  ed_con: MyString
+  therapist: MyString
+  w_therapist: MyString
+  status: MyString
+  color: MyString
+  result: MyString
