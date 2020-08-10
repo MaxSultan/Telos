@@ -13,10 +13,11 @@ export const getReferrals = () => {
   };
 };
 
-export const deleteReferral = (id) => {
+export const deleteReferral = (id, history) => {
   return (dispatch) => {
     Axios.delete(`/api/referals/${id}`).then((res) => {
       dispatch({ type: DELETE_REFERRAL, id: res.data.id });
+      history.push("/active");
     });
   };
 };

@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 import AddReferal from './AddReferal';
+import { deleteReferral } from '../reducers/referrals'
+import { useHistory } from 'react-router';
 
 function Referral(props) {
+    const history = useHistory()
     const [editing, setEditing] = useState(false)
     const { f_name, 
         l_name, 
@@ -28,7 +31,7 @@ function Referral(props) {
             <p>TelosU Therapist: {therapist}</p>
             <p>Created at: {created_at}</p>
             <Button onClick={() => setEditing(!editing)}>Edit</Button>
-            <Button>Delete</Button>
+            <Button onClick={() => props.deleteReferral(id, history)}>Delete</Button>
             {editing && 
             <AddReferal  
             initF_name={f_name} 
@@ -45,4 +48,8 @@ function Referral(props) {
     )
 }
 
-export default connect()(Referral)
+const mapDispatchToProps = (dispatch) => ({
+    deleteReferral:(id, history) => dispatch(deleteReferral(id, history))
+})
+
+export default connect(null, mapDispatchToProps)(Referral)

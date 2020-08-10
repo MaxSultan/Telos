@@ -6,8 +6,7 @@ class Api::ReferalsController < ApplicationController
     end 
 
     def show
-        referal = Referal.find(params[:id])
-        render json: referal
+        render json: @referal
     end 
 
     def create
@@ -29,7 +28,7 @@ class Api::ReferalsController < ApplicationController
     end 
 
     def destroy 
-        render json: referal.destroy
+        render json: @referal.destroy
     end 
 
     private
