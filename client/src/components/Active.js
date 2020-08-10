@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function Active(props) {
 
     useEffect(()=> {
-       if(props.referrals.length == 0) props.getReferrals()
+       if(props.referrals.length <= 1) props.getReferrals()
     },[])
 
     const renderReferrals = () => {

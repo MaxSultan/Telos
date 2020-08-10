@@ -21,10 +21,11 @@ export const deleteReferral = (id) => {
   };
 };
 
-export const editReferral = (id) => {
+export const editReferral = (id, referral, history) => {
   return (dispatch) => {
-    Axios.put(`/api/referals/${id}`).then((res) => {
+    Axios.put(`/api/referals/${id}`, referral).then((res) => {
       dispatch({ type: EDIT_REFERRAL, referral: res.data });
+      history.push("/active");
     });
   };
 };

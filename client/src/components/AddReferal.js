@@ -3,7 +3,7 @@ import { TextField, MenuItem, Button } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect, } from 'react-redux';
-import { addReferral } from '../reducers/referrals'
+import { addReferral, editReferral } from '../reducers/referrals'
 import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,15 +13,15 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function AddReferal(props) {
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [source, setSource] = useState('')
-    const [edCon, setEdCon] = useState('')
-    const [therapist, setTherapist] = useState('')
-    const [wildernessTherapist, setWildernessTherapist] = useState('')
-    const [status, setStatus] = useState('')
-    const [color, setColor] = useState('')
-    const [result, setResult] = useState('')
+    const [firstName, setFirstName] = useState(props.initF_name ? props.initF_name : '')
+    const [lastName, setLastName] = useState(props.initL_name ? props.initL_name : '')
+    const [source, setSource] = useState(props.initSource ? props.initSource : '')
+    const [edCon, setEdCon] = useState(props.initEd_con ? props.initEd_con : '')
+    const [therapist, setTherapist] = useState(props.initTherapist ? props.initTherapist : '')
+    const [wildernessTherapist, setWildernessTherapist] = useState(props.initW_therapist ? props.initW_therapist : '')
+    const [status, setStatus] = useState(props.initStatus ? props.initStatus : '')
+    const [color, setColor] = useState(props.initColor ? props.initColor : '')
+    const [result, setResult] = useState(props.initResult ? props.initResult : '')
     const color_options = ['green','yellow', 'orange', 'red', 'undefined']
     const therapist_options = ['Monte Criddle', 'Trevor ...', 'Kyle', 'Kylie']
     const sources_options = ['Eductaional Consultant', 'Direct Contact','Other']
@@ -41,7 +41,7 @@ function AddReferal(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.addReferral(referral, history)
+        props.editId ? props.editReferral(props.editId, referral, history) : props.addReferral(referral, history)
         defaultValues()
     }
 
@@ -60,7 +60,7 @@ function AddReferal(props) {
     return (
         <div>
             <form onSubmit={handleSubmit} style={{border:'1px solid black', margin:'5em', padding:'3em', marginTop:'1em'}}>
-            <h1>Add Referral</h1>
+            {props.editId ? <h1>Edit Referral</h1> : <h1>Add Referral</h1>}
             <div className='formDiv'>
                 <TextField 
                 id="outlined-basic" 
@@ -173,8 +173,9 @@ function AddReferal(props) {
     )
 }
 
-const mapStateToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
     addReferral: (referral, history) => dispatch(addReferral(referral, history)),
+    editReferral: (id, referral, history) => dispatch(editReferral(id, referral, history)),
 })
 
-export default connect(null, mapStateToProps)(AddReferal)
+export default connect(null, mapDispatchToProps)(AddReferal)

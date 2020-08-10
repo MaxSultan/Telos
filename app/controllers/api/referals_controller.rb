@@ -1,5 +1,5 @@
 class Api::ReferalsController < ApplicationController
-    before_action :set_referal, only: [:show, :edit, :destroy]
+    before_action :set_referal, only: [:show, :update, :destroy]
 
     def index
         render json: Referal.all
@@ -19,12 +19,12 @@ class Api::ReferalsController < ApplicationController
         end 
     end 
 
-    def edit
-        referal.update(referal_params)
-        if referal.save
-            render json: referal
+    def update
+        @referal.update(referal_params)
+        if @referal.save
+            render json: @referal
         else
-            render json: {errors: referal.errors, status: 422}
+            render json: {errors: @referal.errors, status: 422}
         end 
     end 
 
@@ -35,7 +35,7 @@ class Api::ReferalsController < ApplicationController
     private
 
     def set_referal
-        referal = Referal.find(params[:id])
+        @referal = Referal.find(params[:id])
     end 
 
     def referal_params
