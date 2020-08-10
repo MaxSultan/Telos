@@ -67,7 +67,6 @@ const styles = {
     link: {
         color:'white',
         margin:'1em',
-        // boxShadow:'.5em .5em .2em #e5e5e3'
     },
     nav:{
         display:'flex',

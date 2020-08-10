@@ -6,6 +6,7 @@ class Api::ReferalsController < ApplicationController
     end 
 
     def show
+        referal = Referal.find(params[:id])
         render json: referal
     end 
 

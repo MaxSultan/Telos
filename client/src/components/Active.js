@@ -18,7 +18,14 @@ function Active(props) {
             <Grid item xs={12}>
                 <Paper style={styles.item}>
                     <div>
-                        <h1><strong><Link to='referral/'>{ref.f_name} {ref.l_name}</Link></strong></h1>
+                            <Link to={{
+                                pathname: '/referral',
+                                state: {
+                                    referral: ref
+                                }
+                            }} >
+                                <h1><strong>{ref.f_name} {ref.l_name}</strong></h1>
+                            </Link>
                         <p>Status: {ref.status}</p>
                     </div>
                     <div style={{height:'5em', width:'5em', backgroundColor:`${ref.color}`, borderRadius:'2.5em'}}/>
