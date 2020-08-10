@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { showReferral } from '../reducers/referrals'
 
 function Referral(props) {
     const { f_name, l_name, source, ed_con, therapist, w_therapist, created_at } = props.location.state.referral
@@ -18,12 +17,4 @@ function Referral(props) {
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    showReferral: (id) => dispatch(showReferral(id)),
-})
-
-const mapStateToProps = (state) => ({
-    referral: state.referral,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Referral)
+export default connect()(Referral)
