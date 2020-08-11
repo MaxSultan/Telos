@@ -24,7 +24,7 @@ function AddReferal(props) {
     const [result, setResult] = useState(props.initResult ? props.initResult : '')
     const color_options = ['green','yellow', 'orange', 'red', 'undefined']
     const therapist_options = ['Monte Criddle', 'Trevor ...', 'Kyle', 'Kylie']
-    const sources_options = ['Eductaional Consultant', 'Direct Contact','Other']
+    const sources_options = ['Educational Consultant', 'Direct Contact','Other']
     const history = useHistory()
     const classes = useStyles();
     const referral = {
