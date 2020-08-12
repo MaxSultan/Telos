@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import AddReferal from './AddReferal';
 import { deleteReferral } from '../reducers/referrals'
 import { useHistory } from 'react-router';
+import Checklist from './Checklist';
 
 function Referral(props) {
     const history = useHistory()
@@ -21,17 +22,20 @@ function Referral(props) {
         id 
     } = props.location.state.referral
     return (
-        <div>
-            {console.log(props.location.state)}
-            Referral Show page
-            <h1><strong>{f_name} {l_name}</strong></h1>
-            <p>Source: {source} </p>
-            <p>Educational Consultant: {ed_con}</p>
-            <p>Wilderness Therapist: {w_therapist}</p>
-            <p>TelosU Therapist: {therapist}</p>
-            <p>Created at: {created_at}</p>
-            <Button onClick={() => setEditing(!editing)}>Edit</Button>
-            <Button onClick={() => props.deleteReferral(id, history)}>Delete</Button>
+        <div style={styles.page}>
+            <div style={styles.sideBySide}>
+                <div>
+                    <h1><strong>{f_name} {l_name}</strong></h1>
+                    <p>Source: {source} </p>
+                    <p>Educational Consultant: {ed_con}</p>
+                    <p>Wilderness Therapist: {w_therapist}</p>
+                    <p>TelosU Therapist: {therapist}</p>
+                    <p>Created at: {created_at}</p>
+                    <Button onClick={() => setEditing(!editing)}>Edit</Button>
+                    <Button onClick={() => props.deleteReferral(id, history)}>Delete</Button>
+                </div>
+                <Checklist color={color}/>
+            </div>
             {editing && 
             <AddReferal  
             initF_name={f_name} 
@@ -46,6 +50,17 @@ function Referral(props) {
             editId = {id}/>}
         </div>
     )
+}
+
+const styles = {
+    sideBySide: {
+        display: 'flex',
+        justifyContent:'space-between',
+        alignItems: 'center',
+    },
+    page: {
+        maxWidth:'95vw'
+    }
 }
 
 const mapDispatchToProps = (dispatch) => ({

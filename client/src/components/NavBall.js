@@ -41,7 +41,7 @@ export default function NavBall() {
         </div>
     ) : (
         <div style={styles.nav}>
-        <Link style={styles.link} to='/reports' onMouseEnter={() => setHover(true)} >
+        <Link style={styles.link} to='/reports' onMouseEnter={() => setHover(true)}>
             <IconButton style={{backgroundColor:'#024089', color: 'white', height:'3em', width:'3em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}}>
                 <PollTwoToneIcon style={{fontSize:'2.6em'}}/>
             </IconButton>
@@ -67,6 +67,9 @@ const styles = {
     link: {
         color:'white',
         margin:'1em',
+    },
+    hoveredBall: {
+        boxShadow:'.01em .1em .2em .3em #AFAFAF'
     },
     nav:{
         display:'flex',
