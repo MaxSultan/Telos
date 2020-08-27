@@ -9,7 +9,7 @@ export default function Checklist(props) {
             <lable for='recieve_testing'>Recieve testing</lable>
             <br/>
             <input type='checkbox' name='review_testing'/>
-            <lable for='review_testing'>review testing</lable>
+            <lable for='review_testing'>Review testing</lable>
             <br/>
             <input type='checkbox' name='ed_con_call'/>
             <lable for='ed_con_call'>Call with Education Consultant</lable>
@@ -53,7 +53,3 @@ export default function Checklist(props) {
         </div>
     )
 }
-
-// Vetting (Recieve referall, recieve testing, review testing, edcon call, wilderness therapist call, staffing with team if needed)
-// Parents (educational call with parents, schedule tour, Steps to enrollment, Application, Documents)
-// Enrollment Process (Inform team of enrollment, Get team assigned(therapist, lifecoach, apartment), load onto HQ

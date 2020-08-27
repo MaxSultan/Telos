@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect, } from 'react-redux';
 import { addReferral, editReferral } from '../reducers/referrals'
 import { useHistory } from 'react-router';
+import { createChecklist } from '../reducers/checklist';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -59,7 +60,7 @@ function AddReferal(props) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} style={{border:'1px solid black', margin:'5em', padding:'3em', marginTop:'1em'}}>
+            <form onSubmit={handleSubmit} style={{border:'1px solid black', margin:'5em', padding:'3em', marginTop:'1em', backgroundColor:'#ffffff'}}>
             {props.editId ? <h1>Edit Referral</h1> : <h1>Add Referral</h1>}
             <div className='formDiv'>
                 <TextField 

@@ -26,7 +26,7 @@ export const editReferral = (id, referral, history) => {
   return (dispatch) => {
     Axios.put(`/api/referals/${id}`, referral).then((res) => {
       dispatch({ type: EDIT_REFERRAL, referral: res.data });
-      history.push("/active");
+      history.goBack();
     });
   };
 };
@@ -35,7 +35,7 @@ export const addReferral = (product, history) => {
   return (dispatch) => {
     Axios.post("/api/referals", product).then((res) => {
       dispatch({ type: ADD_REFERRAL, referral: res.data });
-      history.push("/active");
+      history.goBack();
     });
   };
 };

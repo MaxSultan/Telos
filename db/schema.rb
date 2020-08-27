@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_003435) do
+ActiveRecord::Schema.define(version: 2020_08_18_182334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "checklists", force: :cascade do |t|
+    t.boolean "vetting"
+    t.boolean "recieve_testing"
+    t.boolean "review_testing"
+    t.boolean "edcon_call"
+    t.boolean "w_therapist_call"
+    t.boolean "staffing"
+    t.boolean "parents"
+    t.boolean "parent_call"
+    t.boolean "tour_scheduled"
+    t.boolean "steps_to_enroll"
+    t.boolean "completed_app"
+    t.boolean "submitted_docs"
+    t.boolean "enrollment"
+    t.boolean "inform_team"
+    t.boolean "team_assigned"
+    t.boolean "telos_hq"
+    t.bigint "referal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["referal_id"], name: "index_checklists_on_referal_id"
+  end
 
   create_table "referals", force: :cascade do |t|
     t.string "f_name"
@@ -29,4 +52,5 @@ ActiveRecord::Schema.define(version: 2020_07_20_003435) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "checklists", "referals"
 end

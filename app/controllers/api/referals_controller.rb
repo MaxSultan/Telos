@@ -12,6 +12,25 @@ class Api::ReferalsController < ApplicationController
     def create
         referal = Referal.new(referal_params)
         if referal.save
+            @checklist = Checklist.create(
+                 vetting: false,
+                 recieve_testing: false,
+                 review_testing: false,
+                 edcon_call: false,
+                 w_therapist_call: false,
+                 staffing: false,
+                 parents: false,
+                 parent_call: false,
+                 tour_scheduled: false,
+                 steps_to_enroll: false,
+                 completed_app: false,
+                 submitted_docs: false,
+                 enrollment: false,
+                 inform_team: false,
+                 team_assigned: false,
+                 telos_hq: false,
+            )
+            referal.checklist =  @checklist
             render json: referal
         else
             render json: {errors: referal.errors, status: 422}

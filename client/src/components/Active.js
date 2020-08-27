@@ -58,18 +58,16 @@ function Active(props) {
     }
 
     return (
-        <div>
+        <div style={{padding:'1em'}}>
             <h1><strong>Active</strong></h1>
             <Grid
             container
             direction="column"
             justify="flex-start"
             alignItems="stretch"
-            style={{width:'98vw', height:'80vh'}}
+            style={{padding:'1em'}}
             >
-                <Grid xs={12} container spacing={1}>
                 {renderActiveReferrals()}
-                </Grid>
             </Grid>
             <h1><strong>Resolved</strong></h1>
             <Grid
@@ -77,11 +75,9 @@ function Active(props) {
             direction="column"
             justify="flex-start"
             alignItems="stretch"
-            style={{width:'98vw', height:'80vh'}}
+            style={{padding:'1em'}}
             >
-                <Grid xs={12} container spacing={1}>
                 {renderResolvedReferrals()}
-                </Grid>
             </Grid>
         </div>
     )
@@ -89,11 +85,12 @@ function Active(props) {
 
 const styles = {
     item: {
-        backgroundColor: '#e5e5d3',
+        background: 'linear-gradient(#C4C4C4, #ABA9A9)',
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
         padding: '1em',
+        marginBottom:'.5em',
     }
 }
 

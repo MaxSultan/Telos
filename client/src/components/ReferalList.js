@@ -36,39 +36,47 @@ function ReferalList(props) {
 
     return (
         <div style={styles.position}>
-            <h1><strong>Referral List</strong></h1>
-            <div style={styles.back}>
+            <h1 style={{maxWidth:'6em'}}><strong>Referral List</strong></h1>
             <Grid
             container
             direction="column"
             justify="flex-start"
             alignItems="stretch"
-            style={{width:'auto', height:'auto'}}
+            style={styles.back}
             >
-                <Grid xs={12} container spacing={1}>
+                <Grid xs={12} container >
                 {renderActiveReferrals()}
                 </Grid>
             </Grid>
-            </div>
         </div>
     )
 }
 
 const styles = {
     back: {
-        backgroundColor: 'gray',
-        height: '23em',
-        width: '15em',
-        overflowY:'scroll'
+        backgroundColor: '#000080',
+        minHeight: '23em',
+        padding: '.5em',
+        overflowY:'scroll',
+        borderRadius:'5px',
+        overflowY:'scroll',
+        maxHeight:'60vh',
+        boxShadow:'0px 5px 5px rgba(0, 0, 0, 0.25)'
     },
     item: {
-        backgroundColor: '#e5e5d3',
+        background: 'linear-gradient(#ffffff,#e5e5d3)',
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
         padding: '1em',
-        margin: '.5em',
+        marginBottom: '.3em',
+    },
+    position:{
+        flexShrink:1,
+        padding:'3em',
+        maxWidth:'20em',
     }
+
 }
 
 const mapStateToProps = (state) => ({
