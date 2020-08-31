@@ -13,23 +13,23 @@ export default function NavBall() {
     return hover ? (
         <div style={styles.nav} onMouseLeave={() => setHover(false)}>
                 <Link style={styles.link} to='/'>
-                    <IconButton style={{backgroundColor:'#FFC619', color:'white', height:'2.2em', width:'2.2em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}}>
+                    <IconButton style={{backgroundColor:'#FFC619', color:'white', height:'2.2em', width:'2.2em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}} className={hover ? "ball4" : "ball4fade"}>
                     <HomeTwoToneIcon style={{fontSize:'2em'}} aria-label='go home'/>
                     </IconButton>
                 </Link>                             
                 <Link style={styles.link} to='/add'>
-                    <IconButton style={{backgroundColor:'#fda300', color:'white', height:'2.4em', width:'2.4em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}}>
+                    <IconButton style={{backgroundColor:'#fda300', color:'white', height:'2.4em', width:'2.4em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}} className="ball3">
                     <AddTwoToneIcon style={{fontSize:'2.2em'}}/>
                     </IconButton>
                 </Link>
 
                 <Link style={styles.link} to='/active'>
-                <IconButton style={{backgroundColor:'#fa841a', color:'white', height:'2.6em', width:'2.6em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}}>
+                <IconButton style={{backgroundColor:'#fa841a', color:'white', height:'2.6em', width:'2.6em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}} className="ball2">
                     <ViewListTwoToneIcon style={{fontSize:'2.4em'}} />
                 </IconButton>
                 </Link>
                 <Link style={styles.link} to='/search'>
-                <IconButton style={{backgroundColor:'#004da9', color:'white', height:'2.8em', width:'2.8em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}} >
+                <IconButton style={{backgroundColor:'#004da9', color:'white', height:'2.8em', width:'2.8em', boxShadow:'.01em .1em .2em .1em #AFAFAF'}} className="ball1" >
                     <SearchTwoToneIcon style={{fontSize:'2.6em'}}/>
                 </IconButton>
                 </Link>
@@ -48,6 +48,7 @@ export default function NavBall() {
         </Link>
 </div>
     )
+
 }
 
 const styles = {

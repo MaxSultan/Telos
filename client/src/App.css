@@ -56,3 +56,52 @@
   align-items:'center';
   width:'100wv';
 }
+
+.ball1{
+  opacity:0;
+  animation-name: appear;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.ball2{
+  opacity:0;
+  animation-name: appear;
+  animation-duration: 250ms;
+  animation-delay: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.ball3{
+  opacity:0;
+  animation-name: appear;
+  animation-duration: 250ms;
+  animation-delay: 500ms;
+  animation-fill-mode: forwards;
+}
+
+.ball4{
+  opacity:0;
+  animation-name: appear;
+  animation-duration: 250ms;
+  animation-delay: 750ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear{
+  0%   { 
+    opacity: 0;
+    display: none !important;
+  }
+  40% {
+    opacity: 0.2;
+  }
+  75%  { 
+    opacity: .5;
+    display: inline-block !important;
+   }
+  100% { 
+    opacity: 1; 
+    display: inline-block !important;
+  }
+}

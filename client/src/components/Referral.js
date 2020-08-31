@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@material-ui/core';
 import AddReferal from './AddReferal';
-import { deleteReferral } from '../reducers/referrals'
 import { useHistory } from 'react-router';
 import Checklist from './Checklist';
+import Axios from 'axios';
 
-function Referral(props) {
+export default function Referral(props) {
     const history = useHistory()
     const [editing, setEditing] = useState(false)
+    const [checklist, setChecklist] = useState({})
     const { f_name, 
         l_name, 
         source, 
@@ -21,6 +21,29 @@ function Referral(props) {
         result,
         id 
     } = props.location.state.referral
+
+    useEffect(()=> {
+        Axios.get(`/api/referals/${id}/checklists`)
+        .then(res => {
+            console.log(res.data)
+            setChecklist(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[])
+
+    const updateChecklist = (referralId, id, checklistObj) => {
+        Axios.put(`/api/referals/${referralId}/checklists/${id}`, checklistObj)
+        .then(res => {
+            console.log(res.data)
+            setChecklist(res.data)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+    }
+
     return (
         <div style={styles.page}>
             <div style={styles.sideBySide}>
@@ -34,7 +57,12 @@ function Referral(props) {
                     <Button onClick={() => setEditing(!editing)}>Edit</Button>
                     <Button onClick={() => props.deleteReferral(id, history)}>Delete</Button>
                 </div>
-                <Checklist color={color}/>
+                <Checklist 
+                {...checklist}
+                color={color} 
+                setChecklist={setChecklist} 
+                updateChecklist={updateChecklist}
+                />
             </div>
             {editing && 
             <AddReferal  
@@ -62,9 +90,3 @@ const styles = {
         maxWidth:'95vw'
     }
 }
-
-const mapDispatchToProps = (dispatch) => ({
-    deleteReferral:(id, history) => dispatch(deleteReferral(id, history))
-})
-
-export default connect(null, mapDispatchToProps)(Referral)
