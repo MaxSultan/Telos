@@ -1,5 +1,6 @@
 import React, { useState } from 'react' 
 import checklist from '../reducers/checklist'
+import { FormControl, FormControlLabel, Checkbox } from '@material-ui/core'
 
 export default function Checklist(props) {
     const [completed_app, setCompleted_app] = useState(props.completed_app ? props.completed_app : false)
@@ -38,10 +39,10 @@ export default function Checklist(props) {
         w_therapist_call,
     }
 
-    const updateCheck = (item) => {
+    const updateCheck = (item, value) => {
         switch(item){
             case 'recieve_testing':
-                setRecieve_testing(!recieve_testing)
+                setRecieve_testing(value)
                 break;
             case 'review_testing':
                 setReview_testing(!review_testing)
@@ -82,8 +83,8 @@ export default function Checklist(props) {
             }
     }
 
-    async function  updateChecklistUi(item, referral_id, id){
-            await updateCheck(item)
+    function  updateChecklistUi(item, value, referral_id, id){
+            updateCheck(item, value)
             if (props.color === "orange" || props.color === "yellow"){
                 if (
                     recieve_testing === true && 
@@ -112,23 +113,26 @@ export default function Checklist(props) {
                 team_assigned === true &&
                 telos_hq === true
             ){setEnrollment(true)}
-                await props.setChecklist(checklistObj)
+                props.setChecklist(checklistObj)
                 console.log('beforeAxios:',checklistObj)
-                await props.updateChecklist(referral_id, id, checklistObj)
+                props.updateChecklist(referral_id, id, checklistObj)
     }
 
     return (
         <section>
-            {console.log('props',props)}
+            {console.log('props', props)}
             <h3><strong>Checklist</strong></h3>
             <h5>Vetting</h5>
-            <input 
-            type='checkbox' 
-            name='recieve_testing' 
-            checked={!!recieve_testing} 
-            onChange={(e) => updateChecklistUi(e.target.name, props.referal_id, props.id)}
+            <FormControlLabel
+            control={
+                <Checkbox 
+                checked={recieve_testing} 
+                onChange={(e) => updateChecklistUi(e.target.name, e.target.checked, props.referal_id, props.id)} 
+                name='recieve_testing'
+                />
+            }
+            label="Recieved Testing"
             />
-            <lable for='recieve_testing'>Recieve testing</lable>
             <br/>
             <input 
             type='checkbox' 
